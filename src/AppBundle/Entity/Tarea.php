@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Tareas
+ * Tarea
  *
- * @ORM\Table(name="tareas", indexes={@ORM\Index(name="proyectos_i", columns={"proyecto"})})
+ * @ORM\Table(name="tarea", indexes={@ORM\Index(name="proyectos_i", columns={"proyecto"})})
  * @ORM\Entity
  */
-class Tareas
+class Tarea
 {
     /**
      * @var string
@@ -108,7 +108,7 @@ class Tareas
      *
      * @param string $nombre
      *
-     * @return Tareas
+     * @return Tarea
      */
     public function setNombre($nombre)
     {
@@ -132,7 +132,7 @@ class Tareas
      *
      * @param string $descripcion
      *
-     * @return Tareas
+     * @return Tarea
      */
     public function setDescripcion($descripcion)
     {
@@ -156,7 +156,7 @@ class Tareas
      *
      * @param \DateTime $inicioEstimado
      *
-     * @return Tareas
+     * @return Tarea
      */
     public function setInicioEstimado($inicioEstimado)
     {
@@ -180,7 +180,7 @@ class Tareas
      *
      * @param \DateTime $finEstimado
      *
-     * @return Tareas
+     * @return Tarea
      */
     public function setFinEstimado($finEstimado)
     {
@@ -204,7 +204,7 @@ class Tareas
      *
      * @param \DateTime $inicioReal
      *
-     * @return Tareas
+     * @return Tarea
      */
     public function setInicioReal($inicioReal)
     {
@@ -228,7 +228,7 @@ class Tareas
      *
      * @param \DateTime $finReal
      *
-     * @return Tareas
+     * @return Tarea
      */
     public function setFinReal($finReal)
     {
@@ -252,7 +252,7 @@ class Tareas
      *
      * @param boolean $hito
      *
-     * @return Tareas
+     * @return Tarea
      */
     public function setHito($hito)
     {
@@ -276,7 +276,7 @@ class Tareas
      *
      * @param integer $padre
      *
-     * @return Tareas
+     * @return Tarea
      */
     public function setPadre($padre)
     {
@@ -300,7 +300,7 @@ class Tareas
      *
      * @param integer $antecesor
      *
-     * @return Tareas
+     * @return Tarea
      */
     public function setAntecesor($antecesor)
     {
@@ -324,7 +324,7 @@ class Tareas
      *
      * @param integer $sucesor
      *
-     * @return Tareas
+     * @return Tarea
      */
     public function setSucesor($sucesor)
     {
@@ -358,7 +358,7 @@ class Tareas
      *
      * @param \AppBundle\Entity\Proyecto $proyecto
      *
-     * @return Tareas
+     * @return Tarea
      */
     public function setProyecto(\AppBundle\Entity\Proyecto $proyecto = null)
     {

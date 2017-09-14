@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Proyecto</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ proyecto.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ proyecto.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Inicioestimado</th>
+                <td>{% if proyecto.inicioEstimado %}{{ proyecto.inicioEstimado|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Finestimado</th>
+                <td>{% if proyecto.finEstimado %}{{ proyecto.finEstimado|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Inicioreal</th>
+                <td>{% if proyecto.inicioReal %}{{ proyecto.inicioReal|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Finreal</th>
+                <td>{% if proyecto.finReal %}{{ proyecto.finReal|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Pm</th>
+                <td>{{ proyecto.pm }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ proyecto.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('proyecto_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('proyecto_edit', { 'id': proyecto.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

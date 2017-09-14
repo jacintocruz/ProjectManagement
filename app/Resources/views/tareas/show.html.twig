@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Tarea</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ tarea.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ tarea.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Inicioestimado</th>
+                <td>{% if tarea.inicioEstimado %}{{ tarea.inicioEstimado|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Finestimado</th>
+                <td>{% if tarea.finEstimado %}{{ tarea.finEstimado|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Inicioreal</th>
+                <td>{% if tarea.inicioReal %}{{ tarea.inicioReal|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Finreal</th>
+                <td>{% if tarea.finReal %}{{ tarea.finReal|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Hito</th>
+                <td>{% if tarea.hito %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Padre</th>
+                <td>{{ tarea.padre }}</td>
+            </tr>
+            <tr>
+                <th>Antecesor</th>
+                <td>{{ tarea.antecesor }}</td>
+            </tr>
+            <tr>
+                <th>Sucesor</th>
+                <td>{{ tarea.sucesor }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ tarea.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('tareas_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('tareas_edit', { 'id': tarea.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

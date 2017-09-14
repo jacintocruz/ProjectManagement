@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Tareas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Inicioestimado</th>
+                <th>Finestimado</th>
+                <th>Inicioreal</th>
+                <th>Finreal</th>
+                <th>Hito</th>
+                <th>Padre</th>
+                <th>Antecesor</th>
+                <th>Sucesor</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tarea in tareas %}
+            <tr>
+                <td><a href="{{ path('tarea_show', { 'id': tarea.id }) }}">{{ tarea.nombre }}</a></td>
+                <td>{{ tarea.descripcion }}</td>
+                <td>{% if tarea.inicioEstimado %}{{ tarea.inicioEstimado|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if tarea.finEstimado %}{{ tarea.finEstimado|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if tarea.inicioReal %}{{ tarea.inicioReal|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if tarea.finReal %}{{ tarea.finReal|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if tarea.hito %}Yes{% else %}No{% endif %}</td>
+                <td>{{ tarea.padre }}</td>
+                <td>{{ tarea.antecesor }}</td>
+                <td>{{ tarea.sucesor }}</td>
+                <td>{{ tarea.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('tarea_show', { 'id': tarea.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('tarea_edit', { 'id': tarea.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('tarea_new') }}">Create a new tarea</a>
+        </li>
+    </ul>
+{% endblock %}
