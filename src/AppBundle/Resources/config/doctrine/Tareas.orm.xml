@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Tareas" table="tareas">
+    <indexes>
+      <index name="proyectos_i" columns="proyecto"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombre" type="string" column="nombre" length="45" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descripcion" type="text" column="descripcion" length="16777215" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="inicioEstimado" type="date" column="inicio_estimado" nullable="false"/>
+    <field name="finEstimado" type="date" column="fin_estimado" nullable="false"/>
+    <field name="inicioReal" type="date" column="inicio_real" nullable="true"/>
+    <field name="finReal" type="date" column="fin_real" nullable="true"/>
+    <field name="hito" type="boolean" column="hito" nullable="true"/>
+    <field name="padre" type="integer" column="padre" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="antecesor" type="integer" column="antecesor" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="sucesor" type="integer" column="sucesor" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="proyecto" target-entity="Proyecto" fetch="LAZY">
+      <join-columns>
+        <join-column name="proyecto" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
